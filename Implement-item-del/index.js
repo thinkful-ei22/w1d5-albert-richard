@@ -85,6 +85,7 @@ function handleItemCheckClicked() {
 // Render
 
 //function to actually delete item from array
+
 function deleteListItem(itemIndex) {
   console.log(`deleting item from index ${itemIndex} from STORE list`);
   STORE.splice(itemIndex, 1);
@@ -92,13 +93,14 @@ function deleteListItem(itemIndex) {
 
 function handleDeleteItemClicked() {
   $('.js-shopping-list').on('click', '.js-item-delete', function(event) {
-    const itemIndex = $(this).index();
-    console.log(itemIndex);    
-    deleteListItem(itemIndex);
+    const indexDelete =  getItemIndexFromElement(event.currentTarget);
+
+    deleteListItem(indexDelete);
     renderShoppingList();
+//As a user, I can delete an item from the list
+console.log('`handleDeleteItemClicked` ran');
   });
-  //As a user, I can delete an item from the list
-  console.log('`handleDeleteItemClicked` ran')
+
 }
 
 // this function will be our callback when the page loads. it's responsible for
