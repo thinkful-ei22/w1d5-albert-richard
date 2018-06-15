@@ -80,11 +80,24 @@ function handleItemCheckClicked() {
     renderShoppingList();
   });
 }
+// (optional) Get info from DOM related to user action
+// Change the store
+// Render
 
+//function to actually delete item from array
+function deleteListItem(itemIndex) {
+  console.log(`deleting item from index ${itemIndex} from STORE list`);
+  STORE.splice(itemIndex, 1);
+}
 
 function handleDeleteItemClicked() {
-  // this function will be responsible for when users want to delete a shopping list
-  // item
+  $('.js-shopping-list').on('click', '.js-item-delete', function(event) {
+    const itemIndex = $(this).index();
+    console.log(itemIndex);    
+    deleteListItem(itemIndex);
+    renderShoppingList();
+  });
+  //As a user, I can delete an item from the list
   console.log('`handleDeleteItemClicked` ran')
 }
 
